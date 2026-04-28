@@ -2,13 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug: Intr_Btn_LED_Blink (NUCLEO-C562RE)",
+      "name": "Debug: Active App (NUCLEO-C562RE)",
       "type": "cortex-debug",
       "request": "launch",
       "servertype": "openocd",
       "cwd": "${workspaceFolder}",
       "preLaunchTask": "debug-prep",
-      "executable": "${workspaceFolder}/applications/Intr_Btn_LED_Blink/build/zephyr/zephyr.elf",
+      "executable": "${workspaceFolder}/.vscode/debug/zephyr.elf",
       "configFiles": [
         "interface/stlink.cfg",
         "${workspaceFolder}/stm32c562re.cfg"
@@ -19,10 +19,14 @@
       "openOCDLaunchCommands": [
         "transport select dapdirect_swd"
       ],
-      "gdbPath": "${userHome}/.zephyr_ide/toolchains/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb",
-      "svdFile": "${workspaceFolder}/STM32C562.svd",
+      "gdbPath": "${userHome}/.zephyr_ide/toolchains/${config:zephyr.sdkVersion}/${config:zephyr.gdbToolchainPath}/bin/${config:zephyr.gdbArch}-gdb",
+      "svdFile": "${workspaceFolder}/${config:zephyr.svdFile}",
       "runToEntryPoint": "main",
-      "showDevDebugOutput": "raw"
+      "showDevDebugOutput": "raw",
+      "postLaunchCommands": [
+        "skip -rfunction ^(chunk_field|chunk_set|chunk_buf|chunk_used|chunk_size|chunk_header_bytes|chunk_usable_bytes|big_heap|big_heap_chunks|big_heap_bytes|set_chunk_used|set_chunk_size|prev_free_chunk|next_free_chunk|set_prev_free_chunk|set_next_free_chunk|left_chunk|right_chunk|set_left_chunk_size|heap_footer_bytes|chunksz|bytes_to_chunksz|min_chunk_size|undersized_chunk|mem_align_gap|bucket_idx|get_alloc_info)$",
+        "skip -rfunction ^(z_sched_|z_swap|z_pend_curr|z_reschedule|z_tick_|z_add_timeout|z_abort_timeout|z_thread_timeout).*"
+      ]
     }
   ]
 }

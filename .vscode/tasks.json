@@ -3,13 +3,20 @@
   "tasks": [
     {
       "label": "debug-prep",
+      "dependsOrder": "sequence",
+      "dependsOn": ["make-build", "gen-debug-context"],
+      "problemMatcher": []
+    },
+    {
+      "label": "gen-debug-context",
       "type": "shell",
-      "command": "make",
-      "args": ["build"],
-      "group": "build",
+      "command": "make _gen-debug-context",
+      "options": { "cwd": "${workspaceFolder}" },
       "presentation": {
         "reveal": "always",
-        "panel": "shared"
+        "panel": "shared",
+        "clear": true,
+        "showReuseMessage": false
       },
       "problemMatcher": []
     },

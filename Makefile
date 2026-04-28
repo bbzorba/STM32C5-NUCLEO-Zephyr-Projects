@@ -81,6 +81,9 @@ debug: clean build
 	@echo ""
 	@echo ">>> Build ready. Press F5 in VS Code to start the debug session."
 
+_gen-debug-context:
+	$(PYTHON) .vscode/gen_debug_context.py
+
 monitor:
 ifeq ($(OS),Windows_NT)
 	powershell -NoProfile -ExecutionPolicy Bypass -File "tools/monitor.ps1" $(if $(PORT),-ComPort $(PORT),) -Baud $(BAUD) $(if $(MONITOR_SECONDS),-DurationSec $(MONITOR_SECONDS),)
@@ -92,6 +95,3 @@ endif
 build-flash: build flash
 
 flashmonitor-auto: build flash monitor
-
-_gen-debug-context:
-	$(PYTHON) .vscode/gen_debug_context.py

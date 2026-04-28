@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
 
@@ -13,7 +12,7 @@ static void configure_leds(const struct gpio_dt_spec *leds, size_t num_leds)
 {
 	for (size_t i = 0; i < num_leds; i++) {
 		if (!gpio_is_ready_dt(&leds[i])) {
-			printf("LED%u GPIO device not ready\n", (unsigned)i);
+			printk("LED%u GPIO device not ready\n", (unsigned)i);
 			return;
 		}
 		gpio_pin_configure_dt(&leds[i], GPIO_OUTPUT_INACTIVE);
