@@ -1,0 +1,28 @@
+/*
+ * Workspace-level overlay for NUCLEO-C562RE (STM32C562RE)
+ *
+ * Shared by all applications in this workspace.
+ *
+ * Board: external/zephyr/boards/st/nucleo_c562re/nucleo_c562re.dts
+ *   led0  -> green_led_1 -> PA5  (GPIO_ACTIVE_HIGH)
+ *   sw0   -> user_button -> PC13 (GPIO_ACTIVE_HIGH)
+ *
+ * Problem: The board DTS enables SPI1 (status = "okay") with spi1_sck_pa5,
+ *          which conflicts with LD1 (PA5). Disable SPI1 to free PA5 as a
+ *          GPIO output for the LED.
+ */
+
+/* Disable SPI1 — its SCK (PA5) conflicts with LD1 (led0) */
+&spi1 {
+    status = "disabled";
+};
+
+/* Explicitly enable GPIOA (LED LD1 on PA5) */
+&gpioa {
+    status = "okay";
+};
+
+/* Explicitly enable GPIOC (user button on PC13) */
+&gpioc {
+    status = "okay";
+};

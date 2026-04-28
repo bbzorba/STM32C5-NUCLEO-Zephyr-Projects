@@ -11,7 +11,8 @@
 # ============================================================
 
 # --- Select application to build (uncomment one) ---
-COMPILE_DIR ?= applications/Intr_Btn_LED_Blink
+#COMPILE_DIR ?= applications/Intr_Btn_LED_Blink
+COMPILE_DIR ?= applications/blink_LED
 
 BOARD     ?= nucleo_c562re
 BUILD_DIR ?= $(COMPILE_DIR)/build
