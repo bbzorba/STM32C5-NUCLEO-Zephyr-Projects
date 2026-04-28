@@ -1,0 +1,40 @@
+{
+  "projects": {
+    "Blink_LED": {
+      "rel_path": "Blink_LED",
+      "name": "Blink_LED",
+      "buildConfigs": {
+        "build/nucleo_c562re": {
+          "relBoardSubDir": "st/nucleo_c562re",
+          "board": "nucleo_c562re",
+          "name": "build/nucleo_c562re",
+          "westBuildArgs": [],
+          "westBuildCMakeArgs": [
+            "-DCONFIG_DEBUG_OPTIMIZATIONS=y",
+            "-DCONFIG_DEBUG_THREAD_INFO=y"
+          ],
+          "debugOptimization": "Debug",
+          "confFiles": {
+            "config": [],
+            "overlay": []
+          },
+          "launchTarget": "Zephyr IDE: Debug",
+          "buildDebugTarget": "Zephyr IDE: Debug",
+          "attachTarget": "Zephyr IDE: Attach",
+          "runnerConfigs": {
+            "stlink_gdbserver": {
+              "runner": "stlink_gdbserver",
+              "name": "stlink_gdbserver",
+              "args": ""
+            }
+          }
+        }
+      },
+      "twisterConfigs": {},
+      "confFiles": {
+        "config": [],
+        "overlay": []
+      }
+    }
+  }
+}

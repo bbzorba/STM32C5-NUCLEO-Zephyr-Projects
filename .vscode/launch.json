@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug: Intr_Btn_LED_Blink (NUCLEO-C562RE)",
+      "type": "cortex-debug",
+      "request": "launch",
+      "servertype": "openocd",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "debug-prep",
+      "executable": "${workspaceFolder}/applications/Intr_Btn_LED_Blink/build/zephyr/zephyr.elf",
+      "configFiles": [
+        "interface/stlink.cfg",
+        "${workspaceFolder}/stm32c562re.cfg"
+      ],
+      "openOCDPreConfigLaunchCommands": [
+        "set CPUTAPID 0x6ba02477"
+      ],
+      "openOCDLaunchCommands": [
+        "transport select dapdirect_swd"
+      ],
+      "gdbPath": "${userHome}/.zephyr_ide/toolchains/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb",
+      "svdFile": "${workspaceFolder}/STM32C562.svd",
+      "runToEntryPoint": "main",
+      "showDevDebugOutput": "raw"
+    }
+  ]
+}
